@@ -6,8 +6,7 @@ function distinctSubstrings(str) {
             if (sub.has(str[j])) {
                 break;
             }
-            sub.add(str[j])
-            console.log(sub)
+            sub.add(str[j]
             count++
         }
     }
