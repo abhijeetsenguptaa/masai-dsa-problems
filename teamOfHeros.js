@@ -1,3 +1,4 @@
+// Brute Force
 function teamOfHeros(N, K, A) {
     let flag = "No";
     for (x = 0; x < N; x++) {
@@ -5,6 +6,59 @@ function teamOfHeros(N, K, A) {
             if (A[x] + A[y] == K && x != y) {
                 flag = "Yes";
             }
+        }
+    }
+    console.log(flag);
+}
+function runProgram(input) {
+    input = input.trim().split("\n");
+    let t = +input[0];
+    let line = 1;
+    for (i = 0; i < t; i++) {
+        let [N, K] = input[line].split(" ").map(Number);
+        line++;
+        let A = input[line].split(" ").map(Number);
+        line++;
+
+        teamOfHeros(N, K, A);
+    }
+}
+
+if (process.env.USER === "") {
+    runProgram(``);
+} else {
+    process.stdin.resume();
+    process.stdin.setEncoding("ascii");
+    let read = "";
+    process.stdin.on("data", function (input) {
+        read += input;
+    });
+    process.stdin.on("end", function () {
+        read = read.replace(/\n$/, "");
+        read = read.replace(/\n$/, "");
+        runProgram(read);
+    });
+    process.on("SIGINT", function () {
+        read = read.replace(/\n$/, "");
+        runProgram(read);
+        process.exit(0);
+    });
+}
+
+// Two Pointer
+function teamOfHeros(N, K, A) {
+    A.sort((a,b)=>a-b);
+    let flag = "No";
+    let i = 0;
+    let j = N-1;
+    while(i<j){
+        if(A[i]+A[j]==K){
+            flag = "Yes";
+            break;
+        }else if(A[i]+A[j]>K){
+            j--
+        }else{
+            i++
         }
     }
     console.log(flag);
