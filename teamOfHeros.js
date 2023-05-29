@@ -47,17 +47,17 @@ if (process.env.USER === "") {
 
 // Two Pointer
 function teamOfHeros(N, K, A) {
-    A.sort((a,b)=>a-b);
+    A.sort((a, b) => a - b);
     let flag = "No";
     let i = 0;
-    let j = N-1;
-    while(i<j){
-        if(A[i]+A[j]==K){
+    let j = N - 1;
+    while (i < j) {
+        if (A[i] + A[j] == K) {
             flag = "Yes";
             break;
-        }else if(A[i]+A[j]>K){
+        } else if (A[i] + A[j] > K) {
             j--
-        }else{
+        } else {
             i++
         }
     }
